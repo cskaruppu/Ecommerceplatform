@@ -1,6 +1,7 @@
-# Amman Maligai — Store Catalog Website
+# Arul Jothi Paruppu Mill — Store Website
 
-A simple website for a local departmental store (maligai kadai) in Perundurai. Customers can see
+A website for a family-run paruppu mill and provision store in Perundurai (serving since 2003).
+Customers can see
 what's in stock today with prices, build a shopping list, and send it to the shop on WhatsApp.
 The shopkeeper manages everything from the admin page — no technical knowledge needed.
 

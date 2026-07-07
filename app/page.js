@@ -7,8 +7,8 @@ export const dynamic = "force-dynamic";
 
 const FEATURES = [
   {
-    title: "Our own grinding",
-    text: "Sambar and rasam powders ground fresh every week with our own recipe — the aroma tells you the difference.",
+    title: "From our own paruppu mill",
+    text: "Toor, urad and moong dal milled in-house — from the mill to the shelf in days, not months. You taste the freshness in every sambar.",
     icon: "M12 3v6m0 0c-3.5 0-6 2.2-6 5.5S8.5 20 12 20s6-2.2 6-5.5S15.5 9 12 9zM9 6l3 3 3-3",
   },
   {
@@ -55,9 +55,9 @@ export default async function HomePage() {
           <h1>{STORE.name}</h1>
           <div className="tamil-tagline">{STORE.tamilTagline}</div>
           <p>
-            A family-run maligai kadai serving {STORE.place} for{" "}
-            {new Date().getFullYear() - Number(STORE.since)}+ years — everyday provisions, our own
-            freshly ground masalas, chekku oils, and honest loose-item pricing.
+            A family-run paruppu mill and provision store serving {STORE.place} since{" "}
+            {STORE.since} — dals milled fresh in-house at direct mill prices, everyday provisions,
+            chekku oils, and honest loose-item weighing.
           </p>
           <div className="cta-row">
             <Link href="/products" className="btn primary big">
@@ -114,8 +114,8 @@ export default async function HomePage() {
             </div>
             <h3>Wholesale &amp; Retail</h3>
             <p>
-              From a 100 g packet to bulk sacks — one shop for households and businesses.{" "}
-              {STORE.wholesaleNote}
+              From a 100 g packet to bulk sacks at direct mill prices — one shop for households
+              and businesses. {STORE.wholesaleNote}
             </p>
           </div>
           <div className="service-card">
