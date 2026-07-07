@@ -1,0 +1,243 @@
+[
+  {
+    "id": "kt-1042",
+    "name": "Stoneware Pour-Over Set",
+    "sku": "KT-1042",
+    "category": "Kitchen",
+    "price": 68,
+    "stock": 142,
+    "status": "active",
+    "tag": "Bestseller",
+    "rating": 4.9,
+    "reviews": 212,
+    "gradient": [
+      "#0E7C66",
+      "#3BAF94"
+    ],
+    "description": "A hand-thrown stoneware pour-over brewer and matching carafe with a matte reactive glaze. The wide spiral ribs slow the water flow for a fuller extraction, and each piece comes out of the kiln with its own character.",
+    "details": {
+      "Materials": "Glazed stoneware, food-safe",
+      "Dimensions": "Brewer 11 cm × 9 cm · Carafe 600 ml",
+      "Weight": "820 g",
+      "Care": "Dishwasher safe, avoid thermal shock",
+      "Origin": "Small-batch, hand thrown"
+    }
+  },
+  {
+    "id": "ws-2210",
+    "name": "Walnut Desk Organizer",
+    "sku": "WS-2210",
+    "category": "Workspace",
+    "price": 54,
+    "stock": 37,
+    "status": "active",
+    "tag": "",
+    "rating": 4.8,
+    "reviews": 96,
+    "gradient": [
+      "#8A5A2B",
+      "#C08A4E"
+    ],
+    "description": "A solid walnut caddy with five compartments sized for pens, cards, cables and a phone. Finished with natural oil so the grain deepens with age.",
+    "details": {
+      "Materials": "Solid American walnut, natural oil finish",
+      "Dimensions": "24 cm × 12 cm × 6 cm",
+      "Weight": "540 g",
+      "Care": "Wipe with a dry cloth, re-oil yearly",
+      "Origin": "FSC-certified timber"
+    }
+  },
+  {
+    "id": "lv-0387",
+    "name": "Linen Throw — Sage",
+    "sku": "LV-0387",
+    "category": "Living",
+    "price": 89,
+    "stock": 8,
+    "status": "active",
+    "tag": "Low stock",
+    "rating": 4.7,
+    "reviews": 154,
+    "gradient": [
+      "#5F7161",
+      "#93A796"
+    ],
+    "description": "A stonewashed 100% European linen throw in a muted sage. Pre-washed for softness, with a hand-knotted fringe on both ends.",
+    "details": {
+      "Materials": "100% European flax linen",
+      "Dimensions": "130 cm × 180 cm",
+      "Weight": "900 g",
+      "Care": "Machine wash cold, line dry",
+      "Origin": "Woven in Portugal"
+    }
+  },
+  {
+    "id": "kt-1187",
+    "name": "Cast Iron Trivet Duo",
+    "sku": "KT-1187",
+    "category": "Kitchen",
+    "price": 32,
+    "stock": 0,
+    "status": "out",
+    "tag": "",
+    "rating": 4.6,
+    "reviews": 41,
+    "gradient": [
+      "#37393B",
+      "#6B6E71"
+    ],
+    "description": "Two nesting cast-iron trivets with silicone feet — one round for pots, one long for baking trays. Heat-safe to 300 °C.",
+    "details": {
+      "Materials": "Cast iron, silicone feet",
+      "Dimensions": "Round Ø18 cm · Long 28 cm × 10 cm",
+      "Weight": "1.1 kg (pair)",
+      "Care": "Hand wash, dry immediately",
+      "Origin": "Sand-cast, powder-coated"
+    }
+  },
+  {
+    "id": "lt-0075",
+    "name": "Cork Globe Lamp",
+    "sku": "LT-0075",
+    "category": "Lighting",
+    "price": 120,
+    "oldPrice": 145,
+    "stock": 64,
+    "status": "active",
+    "tag": "Sale",
+    "rating": 4.9,
+    "reviews": 78,
+    "gradient": [
+      "#B0783C",
+      "#DBA968"
+    ],
+    "description": "A table lamp turned from a single block of Portuguese cork with a frosted glass globe. Warm 2700 K dimmable bulb included.",
+    "details": {
+      "Materials": "Solid cork, frosted glass, brass fittings",
+      "Dimensions": "Ø22 cm × 31 cm tall",
+      "Weight": "1.4 kg",
+      "Care": "Dust with a soft brush",
+      "Origin": "E27 bulb included, dimmer compatible"
+    }
+  },
+  {
+    "id": "kt-1250",
+    "name": "Recycled Glass Carafe",
+    "sku": "KT-1250",
+    "category": "Kitchen",
+    "price": 44,
+    "stock": 96,
+    "status": "active",
+    "tag": "New",
+    "rating": 5,
+    "reviews": 12,
+    "gradient": [
+      "#2C6E8A",
+      "#5FA3BE"
+    ],
+    "description": "A 1-litre carafe mouth-blown from 100% recycled glass, with a tumbler that doubles as its lid. Tiny air bubbles are part of the story.",
+    "details": {
+      "Materials": "100% recycled glass",
+      "Dimensions": "1 L · 26 cm tall",
+      "Weight": "700 g",
+      "Care": "Dishwasher safe",
+      "Origin": "Mouth-blown in Spain"
+    }
+  },
+  {
+    "id": "ws-2301",
+    "name": "Wool Felt Mouse Pad",
+    "sku": "WS-2301",
+    "category": "Workspace",
+    "price": 24,
+    "stock": 11,
+    "status": "active",
+    "tag": "",
+    "rating": 4.5,
+    "reviews": 63,
+    "gradient": [
+      "#71617A",
+      "#A493AE"
+    ],
+    "description": "A 3 mm merino wool felt pad with a vegetable-tanned leather corner tab. Naturally anti-static and easy on the wrist.",
+    "details": {
+      "Materials": "Merino wool felt, vegetable-tanned leather",
+      "Dimensions": "30 cm × 22 cm × 3 mm",
+      "Weight": "95 g",
+      "Care": "Spot clean with cold water",
+      "Origin": "Cut and stitched in-house"
+    }
+  },
+  {
+    "id": "lv-0412",
+    "name": "Ceramic Planter — Ochre",
+    "sku": "LV-0412",
+    "category": "Living",
+    "price": 38,
+    "stock": 210,
+    "status": "active",
+    "tag": "",
+    "rating": 4.8,
+    "reviews": 187,
+    "gradient": [
+      "#B5651D",
+      "#DE9552"
+    ],
+    "description": "A speckled ochre planter with a drainage hole and matching saucer. The unglazed base lets roots breathe.",
+    "details": {
+      "Materials": "Speckled stoneware, partial glaze",
+      "Dimensions": "Ø16 cm × 15 cm tall",
+      "Weight": "980 g",
+      "Care": "Frost-proof, indoor & outdoor",
+      "Origin": "Includes matching saucer"
+    }
+  },
+  {
+    "id": "ws-2144",
+    "name": "Brass Page Holder",
+    "sku": "WS-2144",
+    "category": "Workspace",
+    "price": 19,
+    "stock": 58,
+    "status": "active",
+    "tag": "",
+    "rating": 4.7,
+    "reviews": 29,
+    "gradient": [
+      "#9C7A2D",
+      "#CBAA5C"
+    ],
+    "description": "A weighted solid-brass thumb ring that holds a book open one-handed. Develops a warm patina with use.",
+    "details": {
+      "Materials": "Solid brass",
+      "Dimensions": "Ø5.5 cm, fits thumbs up to 25 mm",
+      "Weight": "60 g",
+      "Care": "Polish with brass cloth or let it patina",
+      "Origin": "Machined, hand-finished"
+    }
+  },
+  {
+    "id": "lv-0455",
+    "name": "Alpaca Cushion Cover",
+    "sku": "LV-0455",
+    "category": "Living",
+    "price": 72,
+    "stock": 25,
+    "status": "active",
+    "tag": "New",
+    "rating": 4.9,
+    "reviews": 8,
+    "gradient": [
+      "#7A5C61",
+      "#AD8A90"
+    ],
+    "description": "A baby-alpaca cushion cover in a soft rose-taupe herringbone, with a hidden zip and duck-feather insert available separately.",
+    "details": {
+      "Materials": "100% baby alpaca",
+      "Dimensions": "50 cm × 50 cm",
+      "Weight": "320 g",
+      "Care": "Dry clean only",
+      "Origin": "Loomed in Peru"
+    }
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "name": "vendora",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Vendora — ecommerce platform with a customer storefront and an admin product console",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "^15.3.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  }
+}
