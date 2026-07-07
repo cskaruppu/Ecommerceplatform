@@ -21,6 +21,10 @@ export default function Header() {
 
   return (
     <header className="site-header">
+      <div className="announce">
+        மொத்தம் &amp; சில்லறை · Wholesale &amp; Retail · Doorstep Delivery · Quality First since{" "}
+        {STORE.since}
+      </div>
       <div className="inner">
         <Link href="/" className="logo">
           {STORE.name} <em>· {STORE.place}</em>

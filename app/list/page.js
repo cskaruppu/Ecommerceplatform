@@ -90,8 +90,9 @@ export default function ListPage() {
             </a>
           </div>
           <p className="form-note">
-            We&rsquo;ll pack your order and keep it ready for pickup at the shop. Final billing is
-            done at the counter — prices for loose items may vary slightly by weight.
+            We&rsquo;ll pack your order and keep it ready for pickup — or mention your address in
+            the WhatsApp message for doorstep delivery. {STORE.deliveryNote} Final billing is done
+            at handover; prices for loose items may vary slightly by weight.
           </p>
         </>
       )}

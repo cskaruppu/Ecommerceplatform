@@ -81,6 +81,12 @@ export default async function ContactPage() {
             <p className="visit-line">{STORE.address}</p>
             <p className="visit-line">{STORE.landmark}</p>
 
+            <h3 className="contact-sub">Doorstep delivery</h3>
+            <p className="visit-line">{STORE.deliveryNote}</p>
+
+            <h3 className="contact-sub">Wholesale orders</h3>
+            <p className="visit-line">{STORE.wholesaleNote}</p>
+
             <h3 className="contact-sub">Shop hours</h3>
             <table className="hours-table">
               <tbody>

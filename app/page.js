@@ -72,6 +72,13 @@ export default async function HomePage() {
               WhatsApp us
             </a>
           </div>
+          <div className="hero-badges">
+            {STORE.services.map((s) => (
+              <span className="hero-badge" key={s}>
+                {s}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -95,6 +102,45 @@ export default async function HomePage() {
           </div>
         </div>
       </div>
+
+      <section className="landing-section container">
+        <h2 className="section-title">How we serve you</h2>
+        <div className="service-cards">
+          <div className="service-card">
+            <div className="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6M9 11h.01M15 11h.01" />
+              </svg>
+            </div>
+            <h3>Wholesale &amp; Retail</h3>
+            <p>
+              From a 100 g packet to bulk sacks — one shop for households and businesses.{" "}
+              {STORE.wholesaleNote}
+            </p>
+          </div>
+          <div className="service-card">
+            <div className="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M3 7h11v10H3zM14 10h4l3 3v4h-7zM7.5 20a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm10 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
+              </svg>
+            </div>
+            <h3>Doorstep Delivery</h3>
+            <p>{STORE.deliveryNote} Send your list on WhatsApp and stay home — we&rsquo;ll come to you.</p>
+          </div>
+          <div className="service-card">
+            <div className="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 3l7 4v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V7l7-4zM9 12l2 2 4-4" />
+              </svg>
+            </div>
+            <h3>Quality Matters Most</h3>
+            <p>
+              Every sack is hand-checked before it reaches the shelf — certified weighing, fresh
+              grinding, and if anything isn&rsquo;t right, we replace it. No questions asked.
+            </p>
+          </div>
+        </div>
+      </section>
 
       <section className="landing-section container">
         <h2 className="section-title">Why {STORE.place} shops with us</h2>

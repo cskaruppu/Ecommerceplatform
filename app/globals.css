@@ -114,6 +114,16 @@ a:focus-visible {
   z-index: 20;
 }
 
+.announce {
+  background: var(--gold);
+  color: var(--gold-ink);
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 6px 24px;
+}
+
 .site-header .inner {
   display: flex;
   align-items: center;
@@ -300,6 +310,81 @@ a:focus-visible {
   padding: 12px 22px;
   font-size: 15px;
   border-radius: 10px;
+}
+
+.hero-badges {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+
+.hero-badge {
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--brand-deep);
+  background: var(--surface);
+  border: 1.5px solid var(--gold);
+  padding: 6px 14px;
+  border-radius: 999px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .hero-badge {
+    color: var(--gold);
+  }
+}
+
+.service-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.service-card {
+  background: linear-gradient(160deg, var(--brand-deep), var(--brand-deeper));
+  border-radius: 14px;
+  padding: 24px 24px 22px;
+  border-bottom: 3px solid var(--gold);
+  box-shadow: var(--shadow);
+}
+
+.service-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: grid;
+  place-items: center;
+  margin-bottom: 14px;
+}
+
+.service-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--gold-ink);
+  fill: none;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.service-card h3 {
+  margin: 0 0 8px;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.01em;
+}
+
+.service-card p {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: rgba(246, 239, 221, 0.88);
 }
 
 .stats-strip {
@@ -1315,8 +1400,17 @@ a:focus-visible {
 .site-footer {
   background: linear-gradient(180deg, var(--brand-deeper), var(--brand-deep));
   border-top: 3px solid var(--gold);
-  padding: 26px 24px;
+  padding: 24px;
   text-align: center;
   color: rgba(246, 239, 221, 0.85);
   font-size: 13.5px;
+}
+
+.footer-services {
+  color: var(--gold);
+  font-weight: 750;
+  font-size: 12.5px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
 }

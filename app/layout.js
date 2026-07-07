@@ -14,6 +14,7 @@ export default function RootLayout({ children }) {
         <Header />
         <main>{children}</main>
         <footer className="site-footer">
+          <div className="footer-services">{STORE.services.join(" · ")}</div>
           {STORE.name} · {STORE.address} · {STORE.hours} · {STORE.phone}
         </footer>
       </body>
