@@ -11,7 +11,7 @@ export default function AddToCart({ product }) {
 
   function handleAdd() {
     addToCart(product, qty);
-    setToast(`Added ${qty} × ${product.name} to cart`);
+    setToast(`Added ${qty} × ${product.name} to your list`);
     setTimeout(() => setToast(""), 2200);
   }
 
@@ -33,20 +33,20 @@ export default function AddToCart({ product }) {
               </button>
             </div>
             <button className="btn primary" onClick={handleAdd}>
-              Add to cart
+              Add to my list
             </button>
-            {product.stock <= 15 ? (
-              <span className="pill low-stock">Only {product.stock} left</span>
+            {product.stock <= 10 ? (
+              <span className="pill low-stock">Only {product.stock} left today</span>
             ) : (
-              <span className="pill in-stock">{product.stock} in stock</span>
+              <span className="pill in-stock">In stock</span>
             )}
           </>
         ) : (
           <>
             <button className="btn" disabled>
-              Sold out
+              Out of stock
             </button>
-            <span className="pill out-of-stock">Out of stock</span>
+            <span className="pill out-of-stock">Ask at the counter for arrival date</span>
           </>
         )}
       </div>

@@ -19,6 +19,7 @@ export default function ProductGrid({ products, initialCategory = "All" }) {
       if (!q) return true;
       return (
         p.name.toLowerCase().includes(q) ||
+        (p.tamilName ?? "").includes(q) ||
         p.sku.toLowerCase().includes(q) ||
         p.category.toLowerCase().includes(q)
       );
@@ -31,7 +32,7 @@ export default function ProductGrid({ products, initialCategory = "All" }) {
         <div className="search">
           ⌕
           <input
-            placeholder="Search products by name, SKU, or category…"
+            placeholder="Search — rice, பருப்பு, oil, soap…"
             aria-label="Search products"
             value={query}
             onChange={(e) => setQuery(e.target.value)}

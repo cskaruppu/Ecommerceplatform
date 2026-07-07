@@ -1,30 +1,40 @@
-# Vendora — Ecommerce Platform
+# Amman Maligai — Store Catalog Website
 
-A full-stack ecommerce starter built with Next.js (App Router). It ships two sides of one product catalog:
+A simple website for a local departmental store (maligai kadai) in Perundurai. Customers can see
+what's in stock today with prices, build a shopping list, and send it to the shop on WhatsApp.
+The shopkeeper manages everything from the admin page — no technical knowledge needed.
 
-- **Storefront** (`/`) — customers browse products, search and filter by category, open a product detail page with full specifications, and manage a cart.
-- **Admin console** (`/admin`) — anybody on the team can add, edit, and delete products. Changes appear on the storefront immediately.
-
-## Pages
+## Customer side
 
 | Route | What it does |
 | --- | --- |
-| `/` | Product grid with live search and category filter chips |
-| `/products/[id]` | Product detail: description, price, rating, stock status, spec table (materials, dimensions, care, SKU) |
-| `/cart` | Cart with quantity controls and order total (stored in the browser) |
-| `/admin` | Product management: create, edit, delete |
+| `/` | All items with live search (English or Tamil) and category filters |
+| `/products/[id]` | Item details: price per unit, Tamil name, description, availability, specifications |
+| `/list` | Shopping list with an "order on WhatsApp" button and a call button |
+
+## Shopkeeper side
+
+| Route | What it does |
+| --- | --- |
+| `/admin` | Add, edit, and delete items; quick "Mark out / Back in" stock toggle |
+
+## Store details
+
+Edit `lib/store.js` to set your store name, address, phone, WhatsApp number, and timings —
+the whole site updates from that one file.
 
 ## API
 
 | Method | Route | Purpose |
 | --- | --- | --- |
-| `GET` | `/api/products` | List all products |
-| `POST` | `/api/products` | Create a product |
-| `GET` | `/api/products/:id` | Fetch one product |
-| `PUT` | `/api/products/:id` | Update a product |
-| `DELETE` | `/api/products/:id` | Delete a product |
+| `GET` | `/api/products` | List all items |
+| `POST` | `/api/products` | Add an item |
+| `GET` | `/api/products/:id` | Fetch one item |
+| `PUT` | `/api/products/:id` | Update an item |
+| `DELETE` | `/api/products/:id` | Delete an item |
 
-Products are stored in `data/products.json` — simple to inspect and edit by hand. Swapping this for PostgreSQL later only requires changing `lib/products.js`; every page and API route goes through it.
+Items are stored in `data/products.json` — easy to inspect and edit by hand. Swapping this for a
+real database later only requires changing `lib/products.js`.
 
 ## Run it
 
@@ -33,10 +43,10 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:3000 for the storefront and http://localhost:3000/admin to manage products.
+Open http://localhost:3000 for the customer page and http://localhost:3000/admin to manage items.
 
 ## Roadmap
 
-1. **Done** — product catalog, storefront, detail pages, cart, admin CRUD
-2. Next — PostgreSQL + Prisma, image uploads, Stripe checkout, admin login
-3. Later — customer accounts, order history, discounts, AI-assisted product descriptions, multi-channel publishing
+1. **Done** — item catalog with Tamil names and ₹ prices, search & filters, detail pages, WhatsApp shopping list, admin management
+2. Next — password protection for `/admin`, item photos, deploy online (e.g. Vercel)
+3. Later — daily price update shortcuts, Tamil-language toggle for the whole site, delivery-area notes

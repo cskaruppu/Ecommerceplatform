@@ -9,7 +9,7 @@ export function initials(name) {
 }
 
 export function money(v) {
-  return `$${Number(v).toFixed(2)}`;
+  return `₹${Number(v).toLocaleString("en-IN")}`;
 }
 
 export default function ProductCard({ product }) {
@@ -26,18 +26,15 @@ export default function ProductCard({ product }) {
       <div className="card-body">
         <div className="cat">{p.category}</div>
         <div className="name">{p.name}</div>
-        <div className="rating">
-          ★ {p.reviews > 0 ? p.rating : "—"} <span>({p.reviews})</span>
-        </div>
+        {p.tamilName ? <div className="tamil">{p.tamilName}</div> : null}
         <div className="card-row">
           <div className="price">
-            {money(p.price)}
-            {p.oldPrice ? <s>{money(p.oldPrice)}</s> : null}
+            {money(p.price)} <span className="unit">/ {p.unit}</span>
           </div>
           {p.stock > 0 ? (
             <span className="pill in-stock">In stock</span>
           ) : (
-            <span className="pill out-of-stock">Sold out</span>
+            <span className="pill out-of-stock">Out of stock</span>
           )}
         </div>
       </div>

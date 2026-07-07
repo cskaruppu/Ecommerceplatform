@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { cartCount } from "@/lib/cart";
+import { STORE } from "@/lib/store";
 
 export default function Header() {
   const [count, setCount] = useState(0);
@@ -22,17 +23,15 @@ export default function Header() {
     <header className="site-header">
       <div className="inner">
         <Link href="/" className="logo">
-          terra<em>&amp;</em>tone
+          {STORE.name} <em>· {STORE.place}</em>
         </Link>
         <nav className="site-nav">
-          <Link href="/">Shop</Link>
-          <Link href="/?category=Kitchen">Kitchen</Link>
-          <Link href="/?category=Living">Living</Link>
-          <Link href="/?category=Workspace">Workspace</Link>
+          <Link href="/">Products</Link>
+          <a href={`tel:${STORE.phone.replace(/\s/g, "")}`}>Call us</a>
           <Link href="/admin">Admin</Link>
         </nav>
-        <Link href="/cart" className="cart-badge">
-          Cart · {count}
+        <Link href="/list" className="cart-badge">
+          My list · {count}
         </Link>
       </div>
     </header>

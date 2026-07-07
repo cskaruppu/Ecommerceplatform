@@ -1,5 +1,6 @@
 import { getProducts } from "@/lib/products";
 import ProductGrid from "@/components/ProductGrid";
+import { STORE } from "@/lib/store";
 
 export const dynamic = "force-dynamic";
 
@@ -11,11 +12,13 @@ export default async function HomePage({ searchParams }) {
     <>
       <div className="hero">
         <div className="inner">
-          <div className="eyebrow">The July edit</div>
-          <h1>Everyday objects, built to outlast trends</h1>
+          <div className="eyebrow">{STORE.hours}</div>
+          <h1>
+            {STORE.name}, {STORE.place}
+          </h1>
           <p>
-            Small-batch homeware and workspace goods from independent makers.
-            Free carbon-neutral shipping over $60.
+            Check what&rsquo;s in stock and today&rsquo;s prices before you come. Add items to your
+            list and send it on WhatsApp — we&rsquo;ll keep your order packed and ready.
           </p>
         </div>
       </div>

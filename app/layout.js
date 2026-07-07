@@ -1,10 +1,10 @@
 import "./globals.css";
 import Header from "@/components/Header";
+import { STORE } from "@/lib/store";
 
 export const metadata = {
-  title: "terra&tone — everyday objects, built to outlast trends",
-  description:
-    "Small-batch homeware and workspace goods from independent makers. Powered by Vendora.",
+  title: `${STORE.name}, ${STORE.place} — today's stock and prices`,
+  description: `${STORE.tagline}. Check what's in stock and today's prices, make your list, and send it on WhatsApp — we'll keep it ready.`,
 };
 
 export default function RootLayout({ children }) {
@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
         <Header />
         <main>{children}</main>
         <footer className="site-footer">
-          terra&amp;tone · powered by Vendora — free carbon-neutral shipping over $60
+          {STORE.name} · {STORE.address} · {STORE.hours} · {STORE.phone}
         </footer>
       </body>
     </html>
