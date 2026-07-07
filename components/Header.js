@@ -28,7 +28,7 @@ export default function Header() {
         <nav className="site-nav">
           <Link href="/">Home</Link>
           <Link href="/products">Products</Link>
-          <a href={`tel:${STORE.phone.replace(/\s/g, "")}`}>Call us</a>
+          <Link href="/contact">Contact</Link>
           <Link href="/admin">Admin</Link>
         </nav>
         <Link href="/list" className="cart-badge">

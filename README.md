@@ -12,6 +12,7 @@ The shopkeeper manages everything from the admin page — no technical knowledge
 | `/products` | All items with live search (English or Tamil), category filters, in-stock filter, and price/name sorting |
 | `/products/[id]` | Item details: price per unit, Tamil name, description, availability, specifications |
 | `/list` | Shopping list with an "order on WhatsApp" button and a call button |
+| `/contact` | Google map with directions, shop hours, customer reviews, and a WhatsApp message form |
 
 ## Shopkeeper side
 
@@ -36,6 +37,10 @@ the whole site updates from that one file.
 
 Items are stored in `data/products.json` — easy to inspect and edit by hand. Swapping this for a
 real database later only requires changing `lib/products.js`.
+
+Customer reviews on the contact page come from `data/reviews.json`. **The shipped reviews are
+sample placeholders** — replace them with your real customer feedback (e.g. copied from your
+Google Business profile) before going live.
 
 ## Run it
 
