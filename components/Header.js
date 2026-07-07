@@ -4,9 +4,12 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { cartCount } from "@/lib/cart";
 import { STORE } from "@/lib/store";
+import { getT } from "@/lib/i18n";
+import LangToggle from "@/components/LangToggle";
 
-export default function Header() {
+export default function Header({ lang = "en" }) {
   const [count, setCount] = useState(0);
+  const t = getT(lang);
 
   useEffect(() => {
     const update = () => setCount(cartCount());
@@ -22,21 +25,21 @@ export default function Header() {
   return (
     <header className="site-header">
       <div className="announce">
-        மொத்தம் &amp; சில்லறை · Wholesale &amp; Retail · Doorstep Delivery · Quality First since{" "}
-        {STORE.since}
+        {t.announce} {STORE.since}
       </div>
       <div className="inner">
         <Link href="/" className="logo">
-          {STORE.name} <em>· {STORE.place}</em>
+          {lang === "ta" ? STORE.tamilName : STORE.name} <em>· {lang === "ta" ? "பெருந்துறை" : STORE.place}</em>
         </Link>
         <nav className="site-nav">
-          <Link href="/">Home</Link>
-          <Link href="/products">Products</Link>
-          <Link href="/contact">Contact</Link>
-          <Link href="/admin">Admin</Link>
+          <Link href="/">{t.navHome}</Link>
+          <Link href="/products">{t.navProducts}</Link>
+          <Link href="/contact">{t.navContact}</Link>
+          <Link href="/admin">{t.navAdmin}</Link>
         </nav>
+        <LangToggle lang={lang} />
         <Link href="/list" className="cart-badge">
-          My list · {count}
+          {t.myList} · {count}
         </Link>
       </div>
     </header>

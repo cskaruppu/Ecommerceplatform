@@ -4,6 +4,8 @@ import { getProduct } from "@/lib/products";
 import { initials, money } from "@/components/ProductCard";
 import AddToCart from "@/components/AddToCart";
 import { STORE } from "@/lib/store";
+import { getLang } from "@/lib/lang";
+import { getT, catName } from "@/lib/i18n";
 
 export const dynamic = "force-dynamic";
 
@@ -19,16 +21,23 @@ export async function generateMetadata({ params }) {
 
 export default async function ProductPage({ params }) {
   const { id } = await params;
+  const lang = await getLang();
+  const t = getT(lang);
   const product = await getProduct(id);
   if (!product) notFound();
 
   const p = product;
+  const primary = lang === "ta" && p.tamilName ? p.tamilName : p.name;
+  const secondary = lang === "ta" && p.tamilName ? p.name : p.tamilName;
+
   return (
     <div className="container">
       <nav className="crumbs" aria-label="Breadcrumb">
-        <Link href="/products">Products</Link> /{" "}
-        <Link href={`/products?category=${encodeURIComponent(p.category)}`}>{p.category}</Link> /{" "}
-        {p.name}
+        <Link href="/products">{t.navProducts}</Link> /{" "}
+        <Link href={`/products?category=${encodeURIComponent(p.category)}`}>
+          {catName(p.category, lang)}
+        </Link>{" "}
+        / {primary}
       </nav>
 
       <div className="detail">
@@ -40,21 +49,23 @@ export default async function ProductPage({ params }) {
         </div>
 
         <div>
-          <div className="eyebrow">{p.category}</div>
-          <h1>{p.name}</h1>
-          {p.tamilName ? <div className="tamil-lg">{p.tamilName}</div> : null}
+          <div className="eyebrow">{catName(p.category, lang)}</div>
+          <h1>{primary}</h1>
+          {secondary ? <div className="tamil-lg">{secondary}</div> : null}
 
           <div className="price-row">
             <span className="price">{money(p.price)}</span>
-            <span className="unit-lg">per {p.unit}</span>
+            <span className="unit-lg">
+              {t.perUnit} {p.unit}
+            </span>
           </div>
 
           <p className="desc">{p.description}</p>
 
-          <AddToCart product={p} />
+          <AddToCart product={p} lang={lang} />
 
           <div className="spec">
-            <h2>Details</h2>
+            <h2>{t.detailsTitle}</h2>
             <table>
               <tbody>
                 {Object.entries(p.details ?? {}).map(([key, value]) => (
@@ -65,19 +76,19 @@ export default async function ProductPage({ params }) {
                 ))}
                 {p.brand ? (
                   <tr>
-                    <td>Brand / source</td>
+                    <td>{t.brandSource}</td>
                     <td>{p.brand}</td>
                   </tr>
                 ) : null}
                 <tr>
-                  <td>Price</td>
+                  <td>{t.priceLabel}</td>
                   <td>
-                    {money(p.price)} per {p.unit}
+                    {money(p.price)} {t.perUnit} {p.unit}
                   </td>
                 </tr>
                 <tr>
-                  <td>Availability</td>
-                  <td>{p.stock > 0 ? "In stock at the shop today" : "Out of stock right now"}</td>
+                  <td>{t.availability}</td>
+                  <td>{p.stock > 0 ? t.availIn : t.availOut}</td>
                 </tr>
               </tbody>
             </table>

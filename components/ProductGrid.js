@@ -2,19 +2,21 @@
 
 import { useMemo, useState } from "react";
 import ProductCard from "@/components/ProductCard";
+import { getT, catName, fmt } from "@/lib/i18n";
 
-const SORTS = {
-  featured: { label: "Featured", fn: null },
-  "price-asc": { label: "Price: low to high", fn: (a, b) => a.price - b.price },
-  "price-desc": { label: "Price: high to low", fn: (a, b) => b.price - a.price },
-  name: { label: "Name A–Z", fn: (a, b) => a.name.localeCompare(b.name) },
-};
-
-export default function ProductGrid({ products, initialCategory = "All" }) {
+export default function ProductGrid({ products, initialCategory = "All", lang = "en" }) {
+  const t = getT(lang);
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState(initialCategory);
   const [inStockOnly, setInStockOnly] = useState(false);
   const [sort, setSort] = useState("featured");
+
+  const SORTS = {
+    featured: { label: t.sortFeatured, fn: null },
+    "price-asc": { label: t.sortPriceAsc, fn: (a, b) => a.price - b.price },
+    "price-desc": { label: t.sortPriceDesc, fn: (a, b) => b.price - a.price },
+    name: { label: t.sortName, fn: (a, b) => a.name.localeCompare(b.name) },
+  };
 
   const categories = useMemo(
     () => ["All", ...new Set(products.map((p) => p.category))],
@@ -34,9 +36,15 @@ export default function ProductGrid({ products, initialCategory = "All" }) {
         p.category.toLowerCase().includes(q)
       );
     });
-    const sortFn = SORTS[sort]?.fn;
+    const sortFn = sort === "featured" ? null : SORTS[sort]?.fn;
     return sortFn ? [...filtered].sort(sortFn) : filtered;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [products, query, category, inStockOnly, sort]);
+
+  const countText =
+    category !== "All"
+      ? fmt(t.itemsCountIn, { n: visible.length, cat: catName(category, lang) })
+      : fmt(t.itemsCount, { n: visible.length });
 
   return (
     <section className="shop-section container">
@@ -44,14 +52,14 @@ export default function ProductGrid({ products, initialCategory = "All" }) {
         <div className="search">
           ⌕
           <input
-            placeholder="Search — rice, பருப்பு, oil, soap…"
+            placeholder={t.searchPlaceholder}
             aria-label="Search products"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
         </div>
         <label className="sort-box">
-          <span>Sort</span>
+          <span>{t.sortLabel}</span>
           <select value={sort} onChange={(e) => setSort(e.target.value)} aria-label="Sort products">
             {Object.entries(SORTS).map(([key, s]) => (
               <option key={key} value={key}>
@@ -68,7 +76,7 @@ export default function ProductGrid({ products, initialCategory = "All" }) {
             className={`chip ${category === c ? "on" : ""}`}
             onClick={() => setCategory(c)}
           >
-            {c}
+            {catName(c, lang)}
           </button>
         ))}
         <button
@@ -76,26 +84,20 @@ export default function ProductGrid({ products, initialCategory = "All" }) {
           onClick={() => setInStockOnly(!inStockOnly)}
           aria-pressed={inStockOnly}
         >
-          ● In stock only
+          {t.inStockOnly}
         </button>
       </div>
 
-      <p className="result-count">
-        {visible.length} item{visible.length === 1 ? "" : "s"}
-        {category !== "All" ? ` in ${category}` : ""}
-      </p>
+      <p className="result-count">{countText}</p>
 
       {visible.length > 0 ? (
         <div className="cards">
           {visible.map((p) => (
-            <ProductCard key={p.id} product={p} />
+            <ProductCard key={p.id} product={p} lang={lang} />
           ))}
         </div>
       ) : (
-        <p className="empty-note">
-          Nothing matches{query ? ` “${query}”` : " these filters"}. Try a different search or
-          category.
-        </p>
+        <p className="empty-note">{t.emptyNote}</p>
       )}
     </section>
   );

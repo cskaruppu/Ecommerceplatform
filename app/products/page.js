@@ -1,6 +1,8 @@
 import { getProducts } from "@/lib/products";
 import ProductGrid from "@/components/ProductGrid";
 import { STORE } from "@/lib/store";
+import { getLang } from "@/lib/lang";
+import { getT } from "@/lib/i18n";
 
 export const dynamic = "force-dynamic";
 
@@ -10,6 +12,8 @@ export const metadata = {
 };
 
 export default async function ProductsPage({ searchParams }) {
+  const lang = await getLang();
+  const t = getT(lang);
   const products = await getProducts();
   const { category } = await searchParams;
 
@@ -17,18 +21,16 @@ export default async function ProductsPage({ searchParams }) {
     <>
       <div className="hero slim">
         <div className="inner">
-          <div className="eyebrow">{STORE.hours}</div>
-          <h1>Today&rsquo;s stock &amp; prices</h1>
-          <p>
-            Search in English or Tamil, filter by category, and add items to your list — send it on
-            WhatsApp and we&rsquo;ll keep your order ready.
-          </p>
+          <div className="eyebrow">{t.hours}</div>
+          <h1>{t.productsTitle}</h1>
+          <p>{t.productsPara}</p>
         </div>
       </div>
       <ProductGrid
         products={products}
         initialCategory={category || "All"}
-        key={category || "All"}
+        lang={lang}
+        key={`${category || "All"}-${lang}`}
       />
     </>
   );

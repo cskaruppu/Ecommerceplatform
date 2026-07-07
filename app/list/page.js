@@ -5,11 +5,20 @@ import { useEffect, useState } from "react";
 import { getCart, setQty, removeFromCart } from "@/lib/cart";
 import { initials, money } from "@/components/ProductCard";
 import { STORE } from "@/lib/store";
+import { getT, fmt } from "@/lib/i18n";
+
+function readLang() {
+  if (typeof document === "undefined") return "en";
+  return document.cookie.includes("lang=ta") ? "ta" : "en";
+}
 
 export default function ListPage() {
   const [items, setItems] = useState([]);
+  const [lang, setLang] = useState("en");
+  const t = getT(lang);
 
   useEffect(() => {
+    setLang(readLang());
     const update = () => setItems(getCart());
     update();
     window.addEventListener("cart-updated", update);
@@ -26,12 +35,12 @@ export default function ListPage() {
 
   return (
     <div className="cart-page container">
-      <h1>My shopping list</h1>
+      <h1>{t.listTitle}</h1>
       {items.length === 0 ? (
         <>
-          <p className="empty-note">Your list is empty.</p>
-          <Link href="/" className="btn primary">
-            Browse products
+          <p className="empty-note">{t.listEmpty}</p>
+          <Link href="/products" className="btn primary">
+            {t.browseProducts}
           </Link>
         </>
       ) : (
@@ -53,8 +62,7 @@ export default function ListPage() {
                   <Link href={`/products/${i.id}`}>{i.name}</Link>
                 </div>
                 <div className="unit">
-                  {money(i.price)}
-                  {i.unit ? ` per ${i.unit}` : " each"}
+                  {money(i.price)} {i.unit ? `${t.per} ${i.unit}` : t.each}
                 </div>
               </div>
               <div className="qty" aria-label={`Quantity of ${i.name}`}>
@@ -68,12 +76,12 @@ export default function ListPage() {
               </div>
               <div className="price num">{money(i.price * i.qty)}</div>
               <button className="link-btn danger" onClick={() => removeFromCart(i.id)}>
-                Remove
+                {t.remove}
               </button>
             </div>
           ))}
           <div className="cart-total">
-            <span>Approx. total</span>
+            <span>{t.approxTotal}</span>
             <span className="num">{money(total)}</span>
           </div>
           <div className="buy-row">
@@ -83,17 +91,13 @@ export default function ListPage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Send order on WhatsApp
+              {t.sendOrder}
             </a>
             <a className="btn" href={`tel:${STORE.phone.replace(/\s/g, "")}`}>
-              Or call {STORE.phone}
+              {t.orCall} {STORE.phone}
             </a>
           </div>
-          <p className="form-note">
-            We&rsquo;ll pack your order and keep it ready for pickup — or mention your address in
-            the WhatsApp message for doorstep delivery. {STORE.deliveryNote} Final billing is done
-            at handover; prices for loose items may vary slightly by weight.
-          </p>
+          <p className="form-note">{t.listNote}</p>
         </>
       )}
     </div>

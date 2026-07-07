@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { getT, catName } from "@/lib/i18n";
 
 export function initials(name) {
   return name
@@ -14,8 +15,12 @@ export function money(v) {
   return `₹${Number(v).toLocaleString("en-IN")}`;
 }
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, lang = "en" }) {
   const p = product;
+  const t = getT(lang);
+  const primary = lang === "ta" && p.tamilName ? p.tamilName : p.name;
+  const secondary = lang === "ta" && p.tamilName ? p.name : p.tamilName;
+
   return (
     <Link href={`/products/${p.id}`} className="card">
       <div
@@ -26,17 +31,17 @@ export default function ProductCard({ product }) {
         {p.tag ? <span className="tag">{p.tag}</span> : null}
       </div>
       <div className="card-body">
-        <div className="cat">{p.category}</div>
-        <div className="name">{p.name}</div>
-        {p.tamilName ? <div className="tamil">{p.tamilName}</div> : null}
+        <div className="cat">{catName(p.category, lang)}</div>
+        <div className="name">{primary}</div>
+        {secondary ? <div className="tamil">{secondary}</div> : null}
         <div className="card-row">
           <div className="price">
             {money(p.price)} <span className="unit">/ {p.unit}</span>
           </div>
           {p.stock > 0 ? (
-            <span className="pill in-stock">In stock</span>
+            <span className="pill in-stock">{t.inStock}</span>
           ) : (
-            <span className="pill out-of-stock">Out of stock</span>
+            <span className="pill out-of-stock">{t.soldOut}</span>
           )}
         </div>
       </div>

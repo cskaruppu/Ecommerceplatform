@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import { addToCart } from "@/lib/cart";
+import { getT, fmt } from "@/lib/i18n";
 
-export default function AddToCart({ product }) {
+export default function AddToCart({ product, lang = "en" }) {
+  const t = getT(lang);
   const [qty, setQty] = useState(1);
   const [toast, setToast] = useState("");
 
@@ -11,7 +13,7 @@ export default function AddToCart({ product }) {
 
   function handleAdd() {
     addToCart(product, qty);
-    setToast(`Added ${qty} × ${product.name} to your list`);
+    setToast(fmt(t.addedToList, { qty, name: product.name }));
     setTimeout(() => setToast(""), 2200);
   }
 
@@ -33,20 +35,20 @@ export default function AddToCart({ product }) {
               </button>
             </div>
             <button className="btn primary" onClick={handleAdd}>
-              Add to my list
+              {t.addToList}
             </button>
             {product.stock <= 10 ? (
-              <span className="pill low-stock">Only {product.stock} left today</span>
+              <span className="pill low-stock">{fmt(t.onlyLeft, { n: product.stock })}</span>
             ) : (
-              <span className="pill in-stock">In stock</span>
+              <span className="pill in-stock">{t.inStock}</span>
             )}
           </>
         ) : (
           <>
             <button className="btn" disabled>
-              Out of stock
+              {t.outOfStock}
             </button>
-            <span className="pill out-of-stock">Ask at the counter for arrival date</span>
+            <span className="pill out-of-stock">{t.askCounter}</span>
           </>
         )}
       </div>
