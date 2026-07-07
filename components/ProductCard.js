@@ -3,6 +3,8 @@ import Link from "next/link";
 export function initials(name) {
   return name
     .split(" ")
+    .map((w) => w.replace(/[^\p{L}\p{N}]/gu, ""))
+    .filter(Boolean)
     .slice(0, 2)
     .map((w) => w[0])
     .join("");

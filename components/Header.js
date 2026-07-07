@@ -26,7 +26,8 @@ export default function Header() {
           {STORE.name} <em>· {STORE.place}</em>
         </Link>
         <nav className="site-nav">
-          <Link href="/">Products</Link>
+          <Link href="/">Home</Link>
+          <Link href="/products">Products</Link>
           <a href={`tel:${STORE.phone.replace(/\s/g, "")}`}>Call us</a>
           <Link href="/admin">Admin</Link>
         </nav>

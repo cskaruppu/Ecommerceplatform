@@ -26,8 +26,9 @@ export default async function ProductPage({ params }) {
   return (
     <div className="container">
       <nav className="crumbs" aria-label="Breadcrumb">
-        <Link href="/">Products</Link> /{" "}
-        <Link href={`/?category=${encodeURIComponent(p.category)}`}>{p.category}</Link> / {p.name}
+        <Link href="/products">Products</Link> /{" "}
+        <Link href={`/products?category=${encodeURIComponent(p.category)}`}>{p.category}</Link> /{" "}
+        {p.name}
       </nav>
 
       <div className="detail">

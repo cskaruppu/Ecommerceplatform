@@ -3,9 +3,18 @@
 import { useMemo, useState } from "react";
 import ProductCard from "@/components/ProductCard";
 
+const SORTS = {
+  featured: { label: "Featured", fn: null },
+  "price-asc": { label: "Price: low to high", fn: (a, b) => a.price - b.price },
+  "price-desc": { label: "Price: high to low", fn: (a, b) => b.price - a.price },
+  name: { label: "Name A–Z", fn: (a, b) => a.name.localeCompare(b.name) },
+};
+
 export default function ProductGrid({ products, initialCategory = "All" }) {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState(initialCategory);
+  const [inStockOnly, setInStockOnly] = useState(false);
+  const [sort, setSort] = useState("featured");
 
   const categories = useMemo(
     () => ["All", ...new Set(products.map((p) => p.category))],
@@ -14,8 +23,9 @@ export default function ProductGrid({ products, initialCategory = "All" }) {
 
   const visible = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return products.filter((p) => {
+    const filtered = products.filter((p) => {
       if (category !== "All" && p.category !== category) return false;
+      if (inStockOnly && p.stock <= 0) return false;
       if (!q) return true;
       return (
         p.name.toLowerCase().includes(q) ||
@@ -24,7 +34,9 @@ export default function ProductGrid({ products, initialCategory = "All" }) {
         p.category.toLowerCase().includes(q)
       );
     });
-  }, [products, query, category]);
+    const sortFn = SORTS[sort]?.fn;
+    return sortFn ? [...filtered].sort(sortFn) : filtered;
+  }, [products, query, category, inStockOnly, sort]);
 
   return (
     <section className="shop-section container">
@@ -38,6 +50,18 @@ export default function ProductGrid({ products, initialCategory = "All" }) {
             onChange={(e) => setQuery(e.target.value)}
           />
         </div>
+        <label className="sort-box">
+          <span>Sort</span>
+          <select value={sort} onChange={(e) => setSort(e.target.value)} aria-label="Sort products">
+            {Object.entries(SORTS).map(([key, s]) => (
+              <option key={key} value={key}>
+                {s.label}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+      <div className="toolrow">
         {categories.map((c) => (
           <button
             key={c}
@@ -47,7 +71,19 @@ export default function ProductGrid({ products, initialCategory = "All" }) {
             {c}
           </button>
         ))}
+        <button
+          className={`chip stock-chip ${inStockOnly ? "on" : ""}`}
+          onClick={() => setInStockOnly(!inStockOnly)}
+          aria-pressed={inStockOnly}
+        >
+          ● In stock only
+        </button>
       </div>
+
+      <p className="result-count">
+        {visible.length} item{visible.length === 1 ? "" : "s"}
+        {category !== "All" ? ` in ${category}` : ""}
+      </p>
 
       {visible.length > 0 ? (
         <div className="cards">
@@ -57,7 +93,8 @@ export default function ProductGrid({ products, initialCategory = "All" }) {
         </div>
       ) : (
         <p className="empty-note">
-          No products match “{query}”. Try a different search or category.
+          Nothing matches{query ? ` “${query}”` : " these filters"}. Try a different search or
+          category.
         </p>
       )}
     </section>

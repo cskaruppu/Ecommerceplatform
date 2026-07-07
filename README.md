@@ -8,7 +8,8 @@ The shopkeeper manages everything from the admin page — no technical knowledge
 
 | Route | What it does |
 | --- | --- |
-| `/` | All items with live search (English or Tamil) and category filters |
+| `/` | Landing page: the kadai's story, what makes it special, today's highlights, visit info |
+| `/products` | All items with live search (English or Tamil), category filters, in-stock filter, and price/name sorting |
 | `/products/[id]` | Item details: price per unit, Tamil name, description, availability, specifications |
 | `/list` | Shopping list with an "order on WhatsApp" button and a call button |
 
