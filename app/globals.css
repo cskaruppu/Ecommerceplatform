@@ -1,41 +1,55 @@
 :root {
-  --bg: #f6f7f5;
-  --surface: #ffffff;
-  --surface-2: #eef1ed;
-  --line: #dde3dc;
-  --ink: #1b2420;
-  --ink-2: #5a675f;
-  --ink-3: #8a968e;
-  --accent: #0e7c66;
+  /* warm cream middle layer */
+  --bg: #faf5ea;
+  --surface: #fffdf7;
+  --surface-2: #f3ecdb;
+  --line: #e6dcc4;
+  --ink: #27221a;
+  --ink-2: #6b6353;
+  --ink-3: #9a917c;
+  /* deep peacock green + marigold gold brand */
+  --brand-deep: #0a3b32;
+  --brand-deeper: #072a24;
+  --brand-cream: #f6efdd;
+  --gold: #f0b429;
+  --gold-deep: #a16207;
+  --gold-ink: #2a1e05;
+  --accent: #0e6b52;
   --accent-ink: #ffffff;
-  --accent-soft: #e1f0eb;
+  --accent-soft: #dfeee4;
   --good: #2e7d45;
-  --good-bg: #e3f2e7;
+  --good-bg: #e3f2e0;
   --warn: #b45309;
-  --warn-bg: #fcefd9;
+  --warn-bg: #fcefd4;
   --bad: #b3261e;
-  --bad-bg: #f9e3e1;
-  --shadow: 0 1px 2px rgba(27, 36, 32, 0.06), 0 8px 24px rgba(27, 36, 32, 0.07);
+  --bad-bg: #f9e3dd;
+  --shadow: 0 1px 2px rgba(39, 34, 26, 0.06), 0 8px 24px rgba(39, 34, 26, 0.08);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #121714;
-    --surface: #1a211d;
-    --surface-2: #222b26;
-    --line: #2e3933;
-    --ink: #e8edea;
-    --ink-2: #a3b0a8;
-    --ink-3: #6e7b73;
-    --accent: #3baf94;
-    --accent-ink: #0c1511;
-    --accent-soft: #1c332c;
+    --bg: #15130e;
+    --surface: #1e1b14;
+    --surface-2: #27231a;
+    --line: #3a3527;
+    --ink: #ede8db;
+    --ink-2: #b0a890;
+    --ink-3: #7d7660;
+    --brand-deep: #08322b;
+    --brand-deeper: #052019;
+    --brand-cream: #f0e8d3;
+    --gold: #e5ad33;
+    --gold-deep: #e5ad33;
+    --gold-ink: #241a04;
+    --accent: #3aa981;
+    --accent-ink: #08150f;
+    --accent-soft: #1a332a;
     --good: #5bc078;
-    --good-bg: #1b2f21;
+    --good-bg: #1b2f1d;
     --warn: #e0a34e;
-    --warn-bg: #332714;
+    --warn-bg: #332810;
     --bad: #e57373;
-    --bad-bg: #331b19;
+    --bad-bg: #331b16;
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.35);
   }
 }
@@ -91,10 +105,10 @@ a:focus-visible {
   padding: 0 24px;
 }
 
-/* ---------- header ---------- */
+/* ---------- header: deep peacock green with gold trim ---------- */
 .site-header {
-  background: var(--surface);
-  border-bottom: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--brand-deep), var(--brand-deeper));
+  border-bottom: 3px solid var(--gold);
   position: sticky;
   top: 0;
   z-index: 20;
@@ -112,35 +126,42 @@ a:focus-visible {
 
 .logo {
   font-weight: 750;
-  font-size: 18px;
+  font-size: 19px;
   letter-spacing: -0.02em;
+  color: var(--brand-cream);
 }
 
 .logo em {
-  color: var(--accent);
+  color: var(--gold);
   font-style: normal;
+  font-weight: 600;
 }
 
 .site-nav {
   display: flex;
   gap: 20px;
   font-size: 14px;
-  color: var(--ink-2);
+  color: rgba(246, 239, 221, 0.82);
   font-weight: 550;
   flex: 1;
 }
 
 .site-nav a:hover {
-  color: var(--accent);
+  color: var(--gold);
 }
 
 .cart-badge {
   font-size: 13.5px;
-  font-weight: 650;
-  background: var(--accent-soft);
-  color: var(--accent);
-  padding: 6px 13px;
+  font-weight: 700;
+  background: var(--gold);
+  color: var(--gold-ink);
+  padding: 7px 15px;
   border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.cart-badge:hover {
+  filter: brightness(1.06);
 }
 
 /* ---------- buttons, pills ---------- */
@@ -210,24 +231,37 @@ a:focus-visible {
   background: var(--bad-bg);
 }
 
-/* ---------- hero ---------- */
+/* ---------- hero: turmeric warmth with kolam dots ---------- */
 .hero {
-  background: linear-gradient(120deg, var(--accent-soft), transparent 65%);
+  background-color: var(--surface-2);
+  background-image: radial-gradient(rgba(160, 122, 32, 0.16) 1.6px, transparent 1.7px),
+    linear-gradient(120deg, rgba(240, 180, 41, 0.22), rgba(240, 180, 41, 0) 60%);
+  background-size: 26px 26px, 100% 100%;
   border-bottom: 1px solid var(--line);
 }
 
 .hero .inner {
   max-width: 1180px;
   margin: 0 auto;
-  padding: 44px 24px;
+  padding: 46px 24px;
+}
+
+.hero h1 {
+  color: var(--brand-deep);
+}
+
+@media (prefers-color-scheme: dark) {
+  .hero h1 {
+    color: var(--ink);
+  }
 }
 
 .eyebrow {
   font-size: 11.5px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--accent);
-  font-weight: 600;
+  color: var(--gold-deep);
+  font-weight: 700;
 }
 
 .hero h1 {
@@ -339,13 +373,14 @@ a:focus-visible {
   top: 10px;
   left: 10px;
   font-size: 10.5px;
-  font-weight: 700;
+  font-weight: 750;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  background: rgba(0, 0, 0, 0.45);
-  color: #fff;
-  padding: 3px 9px;
+  background: var(--gold);
+  color: var(--gold-ink);
+  padding: 3px 10px;
   border-radius: 999px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
 }
 
 .card-body {
@@ -398,8 +433,15 @@ a:focus-visible {
 }
 
 .price {
-  font-weight: 700;
+  font-weight: 750;
   font-variant-numeric: tabular-nums;
+  color: var(--gold-deep);
+}
+
+@media (prefers-color-scheme: dark) {
+  .price {
+    color: var(--gold);
+  }
 }
 
 .price s {
@@ -832,11 +874,12 @@ a:focus-visible {
   transform: translateX(-50%) translateY(0);
 }
 
-/* ---------- footer ---------- */
+/* ---------- footer: matches the header ---------- */
 .site-footer {
-  border-top: 1px solid var(--line);
-  padding: 24px;
+  background: linear-gradient(180deg, var(--brand-deeper), var(--brand-deep));
+  border-top: 3px solid var(--gold);
+  padding: 26px 24px;
   text-align: center;
-  color: var(--ink-3);
-  font-size: 13px;
+  color: rgba(246, 239, 221, 0.85);
+  font-size: 13.5px;
 }
